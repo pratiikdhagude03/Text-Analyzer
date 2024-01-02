@@ -5,6 +5,7 @@ import TextForm from "./components/TextForm";
 import About from "./components/About";
 import { useState } from "react";
 import Alert from "./components/Alert";
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
           setAlert({
             msg:"",
             ty:""
-          });
+          }); 
     },3000);
   }
 
@@ -35,11 +36,13 @@ function App() {
       document.body.style.background='#042743'
       document.body.style.color='white'
       showAlert("Dark Mode is enable","success")
+      document.title='TextUtils-Dark Mode'
     }else{
       setMode('light')
       document.body.style.background='white'
       document.body.style.color='black'
       showAlert("Light Mode is enable","success")
+      document.title='TextUtils-light Mode'
     }
   }
   
