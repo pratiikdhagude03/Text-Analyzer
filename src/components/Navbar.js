@@ -53,6 +53,22 @@ export default function Navbar(props) {
             </button>
           </form>
 
+          <div className="d-flex mx-4">
+            <div className="bg-primary rounded mx-2" onClick={()=>{props.toggelmode('primary')}} style={{height:'30px',width:'30px',cursor:'pointer'}} > </div>
+            <div className="bg-danger rounded mx-2" onClick={()=>{props.toggelmode('danger')}} style={{height:'30px',width:'30px',cursor:'pointer'}} > </div>
+            <div className="bg-success rounded mx-2" onClick={()=>{props.toggelmode('success')}} style={{height:'30px',width:'30px',cursor:'pointer'}} > </div>
+            <div className="bg-warning rounded mx-2" onClick={()=>{props.toggelmode('warning')}} style={{height:'30px',width:'30px',cursor:'pointer'}} > </div>
+            
+            <div className="form-check form-switch">
+          <label className={`form-check-label text-${props.mode==='light'?'dark':'light'} htmlFor="flexSwitchCheckDefault`}>
+              Change Mode
+            </label>
+          </div>
+          
+          
+          </div>
+         
+
 
           {/* switch */}
           <div className="form-check form-switch">
@@ -62,11 +78,11 @@ export default function Navbar(props) {
               role="switch"
               id="flexSwitchCheckDefault"
               text="light"
-              onClick={props.toggelmode}
+              onClick={()=>{props.toggelmode(null)}}
             />
-            <label className={`form-check-label text-${props.mode==='light'?'dark':'light'} htmlFor="flexSwitchCheckDefault`}>
+            {/* <label className={`form-check-label text-${props.mode==='light'?'dark':'light'} htmlFor="flexSwitchCheckDefault`}>
               Change Mode
-            </label>
+            </label> */}
           </div>
 
 

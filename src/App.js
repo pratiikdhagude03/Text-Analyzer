@@ -30,19 +30,39 @@ function App() {
 
 
   const[mode,setMode]=useState('light');
-  const toggelmode= ()=>{
+
+  const removeBodyClasses=()=>{
+
+    document.body.classList.remove('bg-primary');
+    document.body.classList.remove('bg-warning');
+    document.body.classList.remove('bg-success');
+    document.body.classList.remove('bg-danger');
+    document.body.classList.remove('bg-light');
+    document.body.classList.remove('bg-dark');
+
+
+
+  }
+
+  const toggelmode= (cls)=>{
+    removeBodyClasses();
+    document.body.classList.add('bg-'+cls)
     if(mode==='light'){
       setMode('dark');
       document.body.style.background='#042743'
       document.body.style.color='white'
       showAlert("Dark Mode is enable","success")
       document.title='TextUtils-Dark Mode'
+      document.getElementById('myBox').style.background='rgb(10, 23, 34)'
+      document.getElementById('myBox').style.color='white'
     }else{
       setMode('light')
       document.body.style.background='white'
       document.body.style.color='black'
       showAlert("Light Mode is enable","success")
       document.title='TextUtils-light Mode'
+      document.getElementById('myBox').style.background='white';
+      document.getElementById('myBox').style.color='black'
     }
   }
   
@@ -50,12 +70,16 @@ function App() {
   return (
     <>
       <Navbar title="Home" mode={mode} toggelmode={toggelmode}/>
+      <hr/>
       <Alert alert={alert}/>
+      <hr/>
+      
 
-      <div className="container">
+      <div className="container ">
         <TextForm showAlert={showAlert} heading="Enter the text to analyze" />
         {/* <About/> */}
       </div>
+      <hr/>
     </>
   );
 }

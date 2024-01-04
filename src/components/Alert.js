@@ -6,10 +6,10 @@ export default function Alert(props) {
         return low.charAt(0).toUpperCase()+low.slice(1);
     }
   return (
-
-    <div>
+    <>
+    <div style={{height:'50px'}} >
       <div className={`alert alert-${props.alert.ty} alert-dismissible fade show role="alert"`}>
-        <strong>{capitalize(props.alert.ty)} :</strong>  {props.alert.msg}
+        <strong>{capitalize(props.alert.ty)} </strong>  {props.alert.msg}
         {/* <button
           type="button"
           className="btn-close"
@@ -17,6 +17,7 @@ export default function Alert(props) {
           aria-label="Close"
         ></button> */}
       </div>
-    </div>
+     </div>
+    </>
   );
 }

@@ -23,6 +23,7 @@ export default function TextForm(props) {
         var text=document.getElementById('myBox');
         text.select();
         navigator.clipboard.writeText(text.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Content copy !!","success");
     }
 
@@ -45,20 +46,21 @@ export default function TextForm(props) {
           id="myBox"
           rows="8"
           value={text}
+          //style={{background:'rgb(10, 23, 34)'}}
           onChange={handleOnChange}
         ></textarea>
       </div>
-      <button className="btn btn-warning mx-2" onClick={handleUpClick} >Convert to Uppercase</button>
-      <button className="btn btn-warning mx-2" onClick={handleLowClick} >Convert to Uppercase</button>
-      <button className="btn btn-warning mx-2" onClick={handleCopy} >Copy</button>
-      <button className="btn btn-warning mx-2" onClick={handleExtraSpace} >Extra Space</button>
+      <button disabled={text.length===0} className="btn btn-warning mx-2 my-1" onClick={handleUpClick} >Convert to Uppercase</button>
+      <button disabled={text.length===0} className="btn btn-warning mx-2 my-1" onClick={handleLowClick} >Convert to Lowercase</button>
+      <button disabled={text.length===0} className="btn btn-warning mx-2 my-1" onClick={handleCopy} >Copy</button>
+      <button disabled={text.length===0} className="btn btn-warning mx-2 my-1" onClick={handleExtraSpace} >Extra Space</button>
     </div>
 
     <div className="container my-2">
         <h2>Your Text Summary</h2>
-         Word :<p> {text.split(" ").length}</p>
+         Word :<p> {text.split(/\s+/).filter((element)=>{ return element.length!==0}).length  }</p>
          Character :<p>{text.length}</p>
-         Time require to Read :<p>{0.008*text.split(" ").length}</p>
+         Time require to Read :<p>{0.008*text.split(" ").filter((element)=>{ return element.length!==0}).length} min</p>
     </div>
 
     </>
